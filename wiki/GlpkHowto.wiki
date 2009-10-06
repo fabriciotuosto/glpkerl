@@ -1,4 +1,5 @@
 #summary Quick overview of the interface, plus hello world example.
+#labels Featured
 
 = Introduction =
 
