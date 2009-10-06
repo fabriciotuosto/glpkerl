@@ -55,7 +55,7 @@ All 1 tests passed
 
 There are a couple ways this could go wrong.  
 
-One way this could go wrong is because the Erlang build process cannot find the driver specification.  The Erlang source code (and the linked-in driver) are generated automatically from a specification {{{glpkerldrvspec.pm}}} and the Erlang build process uses pkg-config to find the installed specification.  Thus, if the .pc file for the C driver is not in the path for pkg-config, the build process will fail.
+One way this could go wrong is because the Erlang build process cannot find the driver specification.  The Erlang source code (and the linked-in driver) are generated automatically from a specification {{{glpkerldrvspec.pm}}} and the Erlang build process uses pkg-config to find the installed specification.  Thus, if the .pc file for the C driver is not in the path for pkg-config, the build process will fail.  Modifying the environment variable {{{PKG_CONFIG_PATH}}} might assist with this problem.
 
 You could also inspect the test output, which for {{{test-FOO}}} is in {{{tests/test-FOO.out}}}; perhaps it is informative.
 
