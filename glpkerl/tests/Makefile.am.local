@@ -3,3 +3,6 @@ TESTS = 		\
 
 CLEANFILES +=		\
   25fv47.txt
+
+EXTRA_DIST += 		\
+  25fv47.mps
