@@ -27,7 +27,7 @@ Go to the [http://code.google.com/p/glpkerl/downloads/list?can=2&q=*.tar.gz&cols
 # ./configure --prefix /usr/local && make && make -s check
 ...
 }}}
-The default prefix is {{{/usr}}} so if you are ok with that you can omit the prefix argument.  There are no checks right now (they are all on the Erlang side).
+The default prefix is {{{/usr}}} so if you are ok with that you can omit the prefix argument.
 
 If you get compile warnings that are being interpreted as errors, drop me a line about it because I'd like to fix it, and then workaround it with the {{{--disable-hardcore}}} flag to configure:
 {{{
