@@ -1,5 +1,0 @@
-TESTS = 		\
-  module-testglpkerl
-
-CLEANFILES +=		\
-  25fv47.txt
