@@ -4,7 +4,61 @@
 
 This project provides an Erlang interface to GLPK.
 
-You probably know what [http://www.gnu.org/software/glpk/ GLPK] is, otherwise, you wouldn't have much interest in the project.  
+You probably know what [http://www.gnu.org/software/glpk/ GLPK] is, otherwise, you wouldn't have much interest in the project.
+
+= Hello World! =
+
+In case you don't want to read all the mumbo jumbo, here's an example first solving
+{{{
+  min x
+  0 <= x <= 100
+}}}
+and then
+{{{
+  max x
+  0 <= x <= 100
+}}}
+
+
+{{{
+% erl
+Erlang (BEAM) emulator version 5.6.5 [source] [async-threads:0] [kernel-poll:fal
+se]
+
+Eshell V5.6.5  (abort with ^G)
+1> glpkerl:start ().
+ok
+2> { ok, Lp } = glpkerl:new ().
+{ok,{glpk,#Port<0.721>,false,32,64}}
+3> 1 = glpkerl:add_rows (Lp, 1).
+1
+4> ok = glpkerl:set_row_bnds (Lp, 1, glp_up, 0, 100).
+ok
+5> 1 = glpkerl:add_cols (Lp, 1).
+1
+6> ok = glpkerl:set_col_bnds (Lp, 1, glp_lo, 0, 0).
+ok
+7> ok = glpkerl:set_obj_coef (Lp, 1, 1.0).
+ok
+8> ok = glpkerl:load_matrix (Lp, 1, [ 1 ], [ 1 ], [ 1 ]).
+ok
+9> glp_success = glpkerl:simplex (Lp, []).
+*     0: obj =   0.000000000e+00  infeas =  0.000e+00 (0)
+                                                         OPTIMAL SOLUTION FOUND
+                                                                               g
+lp_success
+10> ok = glpkerl:set_obj_dir (Lp, glp_max).
+ok
+11> glp_success = glpkerl:simplex (Lp, []).
+*     0: obj =   0.000000000e+00  infeas =  0.000e+00 (0)
+                                                         *     1: obj =   1.0000
+00000e+02  infeas =  0.000e+00 (0)
+                                  OPTIMAL SOLUTION FOUND
+                                                        glp_success
+12>
+User switch command
+ --> q
+}}}
 
 = Port vs. Linked-In =
 
