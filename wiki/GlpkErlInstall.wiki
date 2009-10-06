@@ -1,4 +1,5 @@
 #summary Install howto for glpkerl
+#labels Featured
 
 = Introduction =
 
