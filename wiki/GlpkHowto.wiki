@@ -47,7 +47,7 @@ would be the Erlang type
 }}}
 Also some methods, e.g. {{{glp_simplex}}}, return 0 to indicate success but otherwise an enumeration.  I define this as 'glp_success'.
 
-The interface file ({{{glpkerl.erl}}} generates proper EDoc and dialyzer type signatures so hopefully it is clear what is going on.
+The interface file ({{{glpkerl.erl}}}) generates proper EDoc and dialyzer type signatures so hopefully it is clear what is going on.
 
 == Argument Types ==
 
