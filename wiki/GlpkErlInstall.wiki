@@ -73,7 +73,7 @@ Stop.
 }}}
 Then you are using bsd make which will not work.  Try again with gnu make, e.g.,
 {{{
-# ./bootstrap && ./build --prefix=/usr/local && gmake -s check
+./configure --prefix /usr/local && gmake && gmake -s check
 }}}
 
 == 2 ==
