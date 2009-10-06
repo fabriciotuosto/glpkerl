@@ -23,6 +23,8 @@ FW_PACKAGE_SUGGESTS=""
 FW_PACKAGE_BUILD_DEPENDS="glpkerldrv"
 FW_PACKAGE_BUILD_CONFLICTS=""
 
+FW_DUPLOAD_ARGS=${FW_DUPLOAD_ARGS-"-t dukeshardy"}
+
 # set to the directory in which version-named tags will be created
 FW_SUBVERSION_TAG_ROOT="https://glpkerl.googlecode.com/svn/tags/glpkerl"
 
