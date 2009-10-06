@@ -39,6 +39,7 @@ GLP_UNDEF,
 GLP_FEAS,
 GLP_INFEAS,
 GLP_NOFEAS 
+}
 }}}
 would be the Erlang type 
 {{{
