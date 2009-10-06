@@ -25,11 +25,11 @@ Any method can return { error, Reason }, which indicates an error not associated
 
 In addition each method can return a value which depends upon the return value of the associated glpk method.  This value is *never* an Erlang tuple so you can distinguish it from the error case.
 
-  || C return type || Erlang type ||
-  || void || 'ok' ||
-  || int || integer () ||
-  || enumeration || 'lowercase_first_enum_val' | 'lowercase_second_enum_val' ... ||
-  || double || float () ||
+|| C return type || Erlang type ||
+|| void || 'ok' ||
+|| int || integer () ||
+|| enumeration || 'lowercase_first_enum_val' | 'lowercase_second_enum_val' ... ||
+|| double || float () ||
 
 With respect to enumerations, basically an enum on the C side is associated with a sum of atoms type on the Erlang side, with lowercasing for convenience.  So something like the return type for {{{glp_get_prim_stat}}}, which is (essentially) declared as
 {{{
@@ -53,14 +53,14 @@ The interface file ({{{glpkerl.erl}}} generates proper EDoc and dialyzer type si
 
 For each mapped GLPK function, the argument types are mapped to Erlang as follows:
 
-  || C argument type || Erlang type ||
-  || glp_prob* || implicit: contained in the glpkerl instance ||
-  || int || integer () ||
-  || double || number () ||
-  || const int* || list (integer ()) ||
-  || const double* || list (number ()) ||
-  || enumeration || 'lowercase_first_enum_val' | 'lowercase_second_enum_val' ... ||
-  || const struct X* || proplist () ||
+|| C argument type || Erlang type ||
+|| glp_prob* || implicit: contained in the glpkerl instance ||
+|| int || integer () ||
+|| double || number () ||
+|| const int* || list (integer ()) ||
+|| const double* || list (number ()) ||
+|| enumeration || 'lowercase_first_enum_val' | 'lowercase_second_enum_val' ... ||
+|| const struct X* || proplist () ||
 
 With respect to enumerations, basically an enum on the C side is associated with a sum of atoms type on the Erlang side, with lowercasing for convenience.  So for instance the msg_level parameter would be ( 'glp_msg_off' | 'glp_msg_err' | 'glp_msg_on' | 'glp_msg_all' ).
 
