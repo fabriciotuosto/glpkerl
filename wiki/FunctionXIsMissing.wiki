@@ -62,6 +62,10 @@ so for instance
 ],
 }}}
 
+Here I'm using the optional type, which maps 'undefined' in Erlang to a constant on the C side.
+
+{{{[ 'optional', TYPE, 'default_value' ]}}}
+
 = Footnotes =
 
 == 1 == 
