@@ -21,7 +21,7 @@ The interface is driven from the specification given in [http://code.google.com/
 
 {{{'void', 'double', 'int32_t'}}}
 
-You should use 'int32_t' for 'int' (but not 'const int32_t*' for 'const int*', see below). 
+You should use {{{'int32_t'}}} for {{{'int'}}} (but not {{{'const int32_t*'}}} for {{{'const int[]'}}}, see below). 
 
 == Enumeration Types ==
 
@@ -65,6 +65,8 @@ so for instance
 Here I'm using the optional type, which maps 'undefined' in Erlang to a constant on the C side.
 
 {{{[ 'optional', TYPE, 'default_value' ]}}}
+
+Hope that helps!
 
 = Footnotes =
 
