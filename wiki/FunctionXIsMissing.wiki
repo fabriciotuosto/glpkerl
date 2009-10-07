@@ -66,7 +66,7 @@ Here I'm using the optional type, which maps 'undefined' in Erlang to a constant
 
 {{{[ 'optional', TYPE, 'default_value' ]}}}
 
-= Asynchronous Type =
+== Asynchronous Type ==
 
 This is only allowed as a return type.  It causes the operation to be performed in another thread so that the Erlang VM is not blocked.  Use this for methods that can take a long time to return, e.g., {{{glp_simplex}}}, {{{glp_interior}}}, etc.
 
