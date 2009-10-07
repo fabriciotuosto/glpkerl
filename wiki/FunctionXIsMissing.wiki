@@ -33,7 +33,7 @@ This is for when GLPK returns needs something like (GLP_ON | GLP_OFF).  Use lowe
 
 Pointer types only work as arguments right now, not return values.
 
-When GLPK uses 'const int[]', you should use 'const int*'.  When GLPK uses 'const double[]', you should use 'const double*'.  The whole unit-offset thing (ugh) is dealt with automatically.
+When GLPK uses {{{const int[]}}}, you should use {{{'const int*'}}}.  When GLPK uses {{{const double[]}}}, you should use {{{'const double*'}}}.  The whole unit-offset thing (ugh) is dealt with automatically.
 
 == Structure Types ==
 
