@@ -1,0 +1,79 @@
+# Introduction #
+
+Do NOT attempt to build from a checkout from the source code repository: that is for wizards only. Instead, grab one of the released source tarballs from the [downloads](http://code.google.com/p/glpkerl/downloads/list) tab.
+
+This page will assist you in installing glpkerl.[[2](#2.md)]
+
+Prerequisites:
+  1. gnu make
+  1. working glpk 4.38 installation
+    * debian: aptitude install libglpk-dev=4.38-1
+    * others: ??? please let me know what worked
+  1. working erlang installation.
+    * debian: aptitude install erlang-dev
+    * os/x (with [fink](http://www.finkproject.org/)): apt-get install erlang-otp
+    * freebsd: pkg\_add -r erlang
+    * others: ??? please let me know what worked
+
+Go to the [downloads section](http://code.google.com/p/glpkerl/downloads/list?can=2&q=*.tar.gz&colspec=Filename+Summary+Uploaded+Size+DownloadCount) and grab the latest `.tar.gz` files: one C driver tarball, and one Erlang tarball.
+
+## C driver ##
+
+```
+# tar -zxf glpkerldrv-4.38.0.tar.gz
+# cd glpkerldrv-4.38.0
+# ./configure --prefix /usr/local && make && make -s check
+...
+```
+The default prefix is `/usr` so if you are ok with that you can omit the prefix argument.
+
+If you get compile warnings that are being interpreted as errors, drop me a line about it because I'd like to fix it, and then workaround it with the `--disable-hardcore` flag to configure:
+```
+# ./configure --prefix /usr/local --disable-hardcore && make && make -s check
+```
+
+Now you can `make install`, or if you have another way of managing stuff on your system, you can `make DESTDIR=/whatever install` and then manipulate the contents of `/whatever`.
+
+## Erlang source code ##
+
+You'll need the C driver built and installed first.
+
+```
+# tar -zxf glpkerl-4.38.0.tar.gz
+# cd glpkerl-4.38.0
+# ./configure --prefix /usr/local && make && make -s check
+```
+Hopefully what you see[[1](#1.md)] is something like
+```
+PASS: module-testglpkerl
+==================
+All 1 tests passed
+==================
+```
+
+There are a couple ways this could go wrong.
+
+One way this could go wrong is because the Erlang build process cannot find the driver specification.  The Erlang source code (and the linked-in driver) are generated automatically from a specification `glpkerldrvspec.pm` and the Erlang build process uses pkg-config to find the installed specification.  Thus, if the .pc file for the C driver is not in the path for pkg-config, the build process will fail.  Modifying the environment variable `PKG_CONFIG_PATH` might assist with this problem.
+
+You could also inspect the test output, which for `test-FOO` is in `tests/test-FOO.out`; perhaps it is informative.
+
+Now you can `make install`, or if you have another way of managing stuff on your system, you can `make DESTDIR=/whatever install` and then manipulate the contents of `/whatever`.
+
+# Footnotes #
+
+## 1 ##
+If you see something like:
+```
+fw requires GNU make to build, you are using bsd make
+*** Error code 1
+
+Stop.
+```
+Then you are using bsd make which will not work.  Try again with gnu make, e.g.,
+```
+./configure --prefix /usr/local && gmake && gmake -s check
+```
+
+## 2 ##
+
+Downloadable source tarballs use automake to build. A source code checkout of the repository uses [fwtemplates](http://code.google.com/p/framewerk) to build, and if you don't know what that is, you probably want to stick with the tarballs.
